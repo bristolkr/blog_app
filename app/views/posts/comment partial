@@ -1,0 +1,25 @@
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.body %></p>
+      <p class="user">by <%= comment.user %> on <%= comment.created_at.to_s(:short) %></p>
+      <p>
+        <%= link_to "x", post_comment_path(@post, comment), { :method => :delete }  %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_for(@post.comments.new, :url => post_comments_path(@post)) do |f| %>
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
