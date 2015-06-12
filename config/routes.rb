@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :blog
+  resources :comments
   resource :session, :only => [:create, :destroy]
 
-  root 'posts#index'
+  root 'blog#index'
 end
