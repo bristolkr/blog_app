@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Spectre's Blog">
     <meta name="author" content="XO_Kera">
-    <link rel="icon" href="../../favicon.ico">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
 
     <title>Spectre's Blog</title>
 
@@ -16,10 +15,10 @@
     <%= csrf_meta_tags %>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://www.maxcdn.com/blog//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link href="posts.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -35,39 +34,33 @@
   </head>
 
   <body>
-  <header class="navbar navbar-default" role="navigation">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <div id="logo" class="navbar-brand">
-  
-        <%= link_to "Spectre's Blog", root_path %></div>
-
-        <nav class="collapse navbar-collapse navbar-ex1-collapse">
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
           <% if user_signed_in? -%>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-            </ul>
+            <a class="blog-nav-item"><%= link_to 'New Post', new_post_path %> </a>
+            <a class="blog-nav-item"><%= link_to 'Edit Account', edit_user_registration_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></a>
           <% else -%>
-            <ul class="nav navbar-nav navbar-right">
-            <li></li>
-              <li><%= link_to 'Want to join?', new_user_registration_path %></li>
-              <li><%= link_to 'Sign in', new_user_session_path %></li>
-            </ul>
-          <% end -%>
+            <a class="blog-nav-item"><%= link_to 'Want to join?', new_user_registration_path %></a>
+            <a class="blog-nav-item"><%= link_to 'Sign in', new_user_session_path %></a>
+          <% end -%> 
         </nav>
       </div>
     </div>
-  </header>
 
-<%= yield %>
+    <div class="container">
 
-<footer class="blog-footer">
-  <p>Blog built by <a href="https://twitter.com/cateia97">@cateia97</a>.</p>
-  <p>
-  <a href="#">Back to top</a>
-  </p>
-</footer>
+      <div class="blog-header">
+        <h1 class="blog-title"><%= link_to "Spectre's Blog", root_path %></h1>
+        <p class="lead blog-description">The official blog of kicking Reaper butt.</p>
+      </div>
+
+    <%= yield %>
+
+    <footer class="blog-footer">
+      <p>Blog built by <a href="https://twitter.com/cateia97">@cateia97</a>.</p>
+    </footer>
 
 
     <!-- Bootstrap core JavaScript
