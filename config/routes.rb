@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :posts
-  resources :blog
   resources :comments
-  resource :session, :only => [:create, :destroy]
-
-  root 'blog#index'
+  
+  root 'posts#index'
 end

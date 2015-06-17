@@ -9,19 +9,17 @@
 
 <br>
 
-<% 5.times do %>
   <% @posts.each do |post| %>
     <div class="row">
       <div class="col-sm-8 blog-main">
         <div class="blog-post">
           <h2 class="blog-post-title"><%= post.title %></h2>
-          <p class="blog-post-meta"><%= time_ago_in_words(post.created_at) %>by link_to "post.user" %></p>
+          <p class="author">Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user.email %></p>
           <p><%= post.body %></p>
         </div>
       </div>
     </div>   
   <% end %>
-<% end %>
   
 <br>
 

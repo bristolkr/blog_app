@@ -10,9 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'devise'
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

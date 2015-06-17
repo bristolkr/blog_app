@@ -75,6 +75,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -159,12 +162,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   devise
   jquery-rails
+  kaminari
   pg
   quiet_assets
   rails (= 4.2.1)

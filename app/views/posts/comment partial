@@ -23,3 +23,18 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= post.image %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+      <%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end -%>
+  <% end -%>

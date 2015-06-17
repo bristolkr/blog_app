@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible: :body, :title, :image
+  # attr_accessor :body, :title, :image
   has_many :comments
   belongs_to :user
   accepts_nested_attributes_for :comments
