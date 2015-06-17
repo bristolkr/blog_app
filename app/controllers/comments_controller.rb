@@ -1,15 +1,19 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_authenticated_user, :except => [:index, :show]
-  
+  # before_action :authenticate_user!
+  before_action :require_authenticated_user, :only => [:destroy]
+
+  # def index
+  #   @comments = Comment.all
+  # end
+
   def create
-    @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
+    @post = Post.friendly.find(params[:post_id])
+    @comment = @post.comments.create(comment_params)
     redirect_to @post, notice: "Comment successful."
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
 

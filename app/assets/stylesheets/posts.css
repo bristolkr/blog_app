@@ -6,7 +6,7 @@
  */
 
 body {
-  font-family: Georgia, Times, serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: #555;
 }
 
@@ -38,6 +38,7 @@ h6, .h6 {
   display: inline-block;
   padding: 10px;
   font-weight: 500;
+  font-family: Helvetica, Arial, sans-serif;
   color: #cdddeb;
 }
 .blog-nav-item:hover,
@@ -80,11 +81,11 @@ h6, .h6 {
  */
 
 .blog-post {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 .blog-post-title {
   margin-bottom: 5px;
-  font-size: 40px;
+  font-size: 30px;
 }
 .blog-post-meta {
   margin-bottom: 20px;

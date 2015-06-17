@@ -18,5 +18,44 @@
   <%= @post.image %>
 </p>
 
+<h2>Comments</h2>
+
+  <% @post.comments.each do |comment| %>
+  	<dl class="dl-horizontal">
+	  	<dt>User:</dt>
+	  	<dd><%= comment.user %></dd>
+
+	  	<dt>Comment:</dt>
+	  	<dd><%= comment.body %></dd>
+		</dl>
+  <% end %>
+
+<%= form_for([@post, @comment]) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

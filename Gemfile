@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'kaminari'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug'
