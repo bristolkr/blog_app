@@ -10,17 +10,23 @@
 
     <title>Spectre's Blog</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'posts', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- Bootstrap Core CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
+
     <div class="blog-masthead">
-      <div class="container">
+      <div class="container-fluid">
         <nav class="blog-nav">
           <% if user_signed_in? -%>
             <a class="blog-nav-item"><%= link_to 'New Post', new_post_path %> </a>
@@ -34,12 +40,21 @@
       </div>
     </div>
 
-    <div class="container">
-
-      <div class="blog-header">
-        <h1 class="blog-title"><%= link_to "Spectre's Blog", root_path %></h1>
-        <p class="lead blog-description">The official blog of kicking Reaper butt.</p>
+    <header><%= image_tag "orbitalstretch.png", class: "intro-header", style: "background-image" %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="site-heading">
+            <h1 class="blog-title"><%= link_to "Spectre's Blog", root_path %></h1>
+              <hr class="small">
+              <span class="subheading">The official blog of kicking Reaper butt.</span>
+            </div>
+          </div>
+        </div>
       </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </header>
 
     <%= yield %>
 

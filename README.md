@@ -1,18 +1,85 @@
 # blog_app
-# Week 6 - Day 1
+# Week 6 - Day 1 - one item
 
-We're going to make a blog app. We'll be adding features to it over the course of the week.
-
- Make a Rails app with Post and Comment models.
- You should have separate CRUD/REST resource controllers for Posts. We will lock this down behind User authentication later this week.
- You should have a home page that lists the most recent posts. 3, 5, you pick how many, whatever looks good to you.
- You should have a post page to show a single post and all of it's comments
- Visitors should be able to leave comments from the post page. You should require a name, valid email address and a non-empty comment body (validations).
- Use Bootstrap, Foundation, or your own ninja skills to make it look great.
- Deploy it to Heroku.
- 
+https://nameless-woodland-3754.herokuapp.com/
 
  Semi-Bonus: Show a "Gravatar" along side each comment using the commenter's email address. Hint: Google "Gravatar" and "Rails", there's easy ways and easier way to do this. It's not hard.
- Bonus: Add pagination to your homepage that lets a visitor browse older posts
- Bonus Bonus: Have nice looking urls for your public facing post links. A common way to do this is to have "slugs" for your posts based on the title, and use those instead of ids to find the post, i.e.: /blog/2015-03-08-welcome-to-my-blog
 
+# Week 6 - Day 2 - done
+
+# Week 7 - Assignment 1
+
+## Image Uploads
+
+You're going to add image attachements to your blog app we've been working on. You can use [CarrierWave](https://github.com/carrierwaveuploader/carrierwave/tree/v0.10.0), [Paperclip](https://github.com/thoughtbot/paperclip), whatever you want.
+
+Your blog posts should be accompanied by a large image on it's main page, and a smaller
+thumbnail on the index page. Consider also trimming the post on the index page to just
+the first paragraph of the blog post on the second page.
+
+You'll need to install [ImageMagick](http://www.imagemagick.org) on your Mac (probably via `homebrew`). You'll
+also probably need RMagick or MiniMagick in your Rails app (I prefer MiniMagick). Heroku will already
+have ImageMagick installed.
+
+You'll also need to sign up for [AWS](http://aws.amazon.com) and create some S3 buckets (for development
+and production).
+
+## Requirements
+
+- [ ] Your `Post` model should be extended to have a single image attachment.
+- [ ] Your protected posts controller and views should be extended to allow uploading that image.
+- [ ] That image attachment should be resized to a default size that works with your layout.
+- [ ] You should also create a smaller thumbnail version of that image to use on your index page.
+- [ ] Use S3 to store your file attachements in production (and optionally development, I recommend doing it in both).
+- [ ] **Bonus**: After getting the above working, further modify your app to allow a `Post` to have _multiple_ images.
+
+# Week 7 - Assignment 1
+
+## Using Third Party Authentication with OAuth
+
+We're going to replace our hand-rolled user/password authentication in our Blog app with OAuth.
+
+## Requirement
+
+- [ ] You can use Devise or just use Omniauth by itself ([like we did in class](https://github.com/tiy-tpa-rails-q2-2015/banzai/commit/bfeac48d009489c8b208b0dfa8df3c1d954e08ab)). 
+- [ ] Use Twitter, Github, Facebook, Google, whatever provider you want.
+- [ ] Users should be able to sign in and out, just as before.
+- [ ] Deploy your updated app to Heroku.
+- [ ] **Bonus:** Restrict the users signing in to a predefined list of usernames/emails (ie. only you)
+- [ ] **Bonus Bonus:** Allow the user to sign in with multiple providers, keeping tokens for all of them. You'll need to make a separate model to store the authorizations on, that belongs to your User (so you can have many of them).
+
+# Week 7 - Assignment 3
+
+## jQuery Ajax
+
+We're going to add commenting with AJAX to our blog posts. You'll need to do a fair bit of reading and research on jQuery and javascript to build on what we demoed in class. Try using some of the terminology in the requirements here as search keywords to guide you. This research is primary component of this assignment. You'll really only end up writing a few lines of code to get this done.
+
+## Requirement
+
+- [ ] Remember about `$(function { '...' })` to wait for the DOM to be ready.
+- [ ] Catch the `submit` event on your comment form. Look into `event.preventDefault()` to stop it from actually submitting, and do an AJAX request to `comments#create` instead.
+- [ ] Have your create action respond to both HTML and JSON
+- [ ] The JSON response should render a partial for a single comment into a string 
+- [ ] Your AJAX `success` handler should take the response data (your comment partial) and `append` it to the comments list.
+- [ ] BAM AJAX!
+
+# Week 8 - Assignment 2
+
+## Blog Donations
+
+We're going to get started working with payment providers. Before we build a full fledged commerce app this weekend, lets try just taking a small fixed donation on our blog.
+
+We'll use (Stripe's Checkout)[https://stripe.com/checkout] system to do this.
+
+### Requirements
+
+- [ ] Read the documentation for (Stripe Checkout)[https://stripe.com/docs/checkout].
+- [ ] Sign up for a Stripe account and get your API keys.
+- [ ] Use your .env file to store your keys locally as `PUBLISHABLE_KEY` and `SECRET_KEY`
+- [ ] Pick a fixed amount, say $5 for the donations.
+- [ ] Add a donation button for that amount to your blog app. Maybe in a sidebar or in the footer.
+- [ ] Checkout the (Rails tutorial)[https://stripe.com/docs/checkout/guides/rails]. It should get you the rest of the way.
+- [ ] There's something bugging me in the tutorial with the routes and their controller, see if you can tell what it is. Leave your guess as a comment on this issue.
+- [ ] Even though the credit card details never hit our page, users will expect to see SSL in the browser when they make a credit card payment. Set your Rails app up to enforce SSL (in production only, setting it up in development is non-trivial). SSL works on your Heroku domains out of the box.
+- [ ] Deploy your changes to Heroku.
+- [ ] **Bonus**: Allow the user to choose how much they want to donate instead of a fixed amount.

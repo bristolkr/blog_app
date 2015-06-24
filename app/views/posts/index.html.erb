@@ -6,7 +6,7 @@
         <div class="blog-post">
           <h2 class="blog-post-title"><%= link_to(post.title, post_path(post)) %></h2>
           <p class="author">Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user.email %></p>
-          <p><%= post.body %></p>
+          <p class="blog-post-body"><%= post.body %></p>
         </div>
       </div>
     </div>   
