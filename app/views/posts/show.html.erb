@@ -4,7 +4,7 @@
       <div class="col-sm-8 blog-main">
         <div class="blog-post">
           <h2 class="blog-post-title"><%= @post.title %></h2>
-          <!--<%= @post.image %>-->
+          <p class="blog-image"><%= image_tag(@post.image) %></p>
           <p class="author">Submitted <%= time_ago_in_words(@post.created_at) %> by <%= @post.user.email %></p>
           <p class="blog-post-body"><%= @post.body %></p>
           <p class="blog-post-tags"><strong>Tags: </strong><%= @post.all_tags %></p>
