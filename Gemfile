@@ -13,6 +13,9 @@ gem 'devise'
 gem 'kaminari'
 gem 'friendly_id'
 
+gem 'carrierwave'
+gem 'puma'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

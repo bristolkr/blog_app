@@ -18,6 +18,11 @@
   <%= @post.image %>
 </p>
 
+<p>
+  <strong>Tags:</strong>
+  <%= @post.all_tags %>
+</p>
+
 <h2>Comments</h2>
 
   <% @post.comments.each do |comment| %>

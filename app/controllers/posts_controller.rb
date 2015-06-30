@@ -1,30 +1,26 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:index, :show]
-  before_action :authorized_user, only: [:edit, :update, :destroy]
-  
+  # before_action :authorized_user, only: [:edit, :update, :destroy]
+    
 
-  # GET /posts
   def index
     @posts = Post.page(params[:page]).per(5)
   end
 
-  # GET /posts/1
   def show
     @post = Post.friendly.find(params[:id])
     @comment = Comment.new
   end
 
-  # GET /post/new
   def new
     @post = current_user.posts.new
   end
 
-  # GET /posts/1/edit
   def edit
+    @post = Post.friendly.find(params[:id])
   end
 
-  # POST /post
   def create
     @post = current_user.posts.new(post_params)
       if @post.save
@@ -57,6 +53,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :image)
+      params.require(:post).permit(:title, :body, :image, :all_tags)
     end
 end

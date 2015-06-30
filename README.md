@@ -83,3 +83,25 @@ We'll use (Stripe's Checkout)[https://stripe.com/checkout] system to do this.
 - [ ] Even though the credit card details never hit our page, users will expect to see SSL in the browser when they make a credit card payment. Set your Rails app up to enforce SSL (in production only, setting it up in development is non-trivial). SSL works on your Heroku domains out of the box.
 - [ ] Deploy your changes to Heroku.
 - [ ] **Bonus**: Allow the user to choose how much they want to donate instead of a fixed amount.
+
+# Week 9 - Assignment 1
+
+## Integrating 3rd-Party SaaS tools
+
+Many companies provide "Software as a Service" (SaaS) tools to developers. Let's check some out.
+
+- [ ] Pick any one of your apps you've worked on so far, your blog app, one of the weekend projects, etc.
+- [ ] Setup [New Relic](https://addons.heroku.com/newrelic) in your app for Performance Monitoring.
+- [ ] Setup some [external error tracking](https://addons.heroku.com/#errors-exceptions). I really like [Honeybadger](https://www.honeybadger.io/) (though there's no free option) and [Rollbar](https://rollbar.com/), but I'm interested in checking out [Raygun](http://raygun.io/).
+- [ ] Bonus: Setup some additional analytics, like [Google Analytics](http://www.google.com/analytics) or [Keen.io](https://keen.io/) (also available as a [Heroku addon](https://addons.heroku.com/keen)). Alternatively, checkout [Segment](https://segment.com/) as a way to configure multiple analytics and more.
+
+# Week 9 - Assignment 2
+
+## Mixins and `ActiveSupport::Concern`
+
+We're going to use `ActiveSupport::Concern` to create a mixin to alter the behavior of something in our app. E.g., you might extract the tagging functionality in your blog to be a generic `Taggable` concern that you could extract for use in another app (or even make into a gem/engine). "Mixins" like this help us reduce redundancies and organize code even if the concern is only used in one class.
+
+Read about "composition over inheritance" and "single responsibility principle" for more on the _philosophical_ reasons we might do this.
+
+- [ ] Pick any one of your apps you've worked on so far. E.g., your blog app, one of the weekend projects, etc.
+- [ ] Use `ActiveSupport::Concern` in some way to define some functionality of one or more of your models.
