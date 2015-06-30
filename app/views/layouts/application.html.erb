@@ -56,7 +56,17 @@
       <p class="alert"><%= alert %></p>
     </header>
 
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="main-content">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <footer class="blog-footer">
       <p>Blog built by <a href="https://twitter.com/cateia97">@cateia97</a>.</p>

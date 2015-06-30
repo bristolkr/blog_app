@@ -15,8 +15,11 @@ gem 'devise'
 gem 'kaminari'
 gem 'friendly_id'
 
+gem 'fog'
+gem 'aws-sdk'
 gem 'carrierwave'
 gem 'puma'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug'

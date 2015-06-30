@@ -170,6 +170,13 @@ a.blog-nav-item:visited {
  * Main column and sidebar layout
  */
 
+ .main-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
+ }
+
 .blog-main {
   font-size: 18px;
   line-height: 1.5;
@@ -197,6 +204,10 @@ a.blog-nav-item:visited {
 .blog-post-meta {
   margin-bottom: 20px;
   color: #999;
+}
+
+.blog-post-tags {
+  font-family: 'PT Sans Narrow', Helvetica, sans-serif;
 }
 
 
