@@ -15,9 +15,10 @@ gem 'devise'
 gem 'kaminari'
 gem 'friendly_id'
 
-gem 'fog'
-gem 'aws-sdk'
 gem 'carrierwave'
+gem 'fog'
+gem 'fog-aws'
+gem 'aws-sdk'
 gem 'puma'
 gem 'mini_magick'
 

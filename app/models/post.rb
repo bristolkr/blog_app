@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   attr :tag_list
   extend FriendlyId
   friendly_id :title, use: :slugged

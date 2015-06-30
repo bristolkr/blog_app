@@ -1,28 +1,18 @@
 # blog_app
-# Week 6 - Day 1 - one item
 
 https://nameless-woodland-3754.herokuapp.com/
 
- Semi-Bonus: Show a "Gravatar" along side each comment using the commenter's email address. Hint: Google "Gravatar" and "Rails", there's easy ways and easier way to do this. It's not hard.
-
+# Week 6 - Day 1 - done
 # Week 6 - Day 2 - done
+# Week 6 - Day 3 - done
 
-# Week 7 - Assignment 1
+# Week 7 - Day 1
 
 ## Image Uploads
-
-You're going to add image attachements to your blog app we've been working on. You can use [CarrierWave](https://github.com/carrierwaveuploader/carrierwave/tree/v0.10.0), [Paperclip](https://github.com/thoughtbot/paperclip), whatever you want.
 
 Your blog posts should be accompanied by a large image on it's main page, and a smaller
 thumbnail on the index page. Consider also trimming the post on the index page to just
 the first paragraph of the blog post on the second page.
-
-You'll need to install [ImageMagick](http://www.imagemagick.org) on your Mac (probably via `homebrew`). You'll
-also probably need RMagick or MiniMagick in your Rails app (I prefer MiniMagick). Heroku will already
-have ImageMagick installed.
-
-You'll also need to sign up for [AWS](http://aws.amazon.com) and create some S3 buckets (for development
-and production).
 
 ## Requirements
 
@@ -33,7 +23,7 @@ and production).
 - [ ] Use S3 to store your file attachements in production (and optionally development, I recommend doing it in both).
 - [ ] **Bonus**: After getting the above working, further modify your app to allow a `Post` to have _multiple_ images.
 
-# Week 7 - Assignment 1
+# Week 7 - Day 2
 
 ## Using Third Party Authentication with OAuth
 
@@ -41,7 +31,7 @@ We're going to replace our hand-rolled user/password authentication in our Blog 
 
 ## Requirement
 
-- [ ] You can use Devise or just use Omniauth by itself ([like we did in class](https://github.com/tiy-tpa-rails-q2-2015/banzai/commit/bfeac48d009489c8b208b0dfa8df3c1d954e08ab)). 
+- [ ] Set up Omniauth alongside Devise. 
 - [ ] Use Twitter, Github, Facebook, Google, whatever provider you want.
 - [ ] Users should be able to sign in and out, just as before.
 - [ ] Deploy your updated app to Heroku.
