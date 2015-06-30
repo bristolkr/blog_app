@@ -26335,3 +26335,156 @@ Processing by PostsController#show as HTML
   Rendered posts/show.html.erb within layouts/application (7.1ms)
   [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
 Completed 200 OK in 91ms (Views: 87.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-06-30 18:10:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts" LIMIT 5 OFFSET 0
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (100.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 422ms (Views: 381.6ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/posts/testing-images" for 127.0.0.1 at 2015-06-30 18:10:22 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"testing-images"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "testing-images"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1  [["slug", "testing-images"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (43.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 189ms (Views: 170.9ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/posts/testing-images/edit" for 127.0.0.1 at 2015-06-30 18:10:25 -0400
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"testing-images"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "testing-images"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "testing-images"]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 1]]
+  Rendered posts/_form.html.erb (15.6ms)
+  Rendered posts/edit.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 139ms (Views: 129.9ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/posts/testing-images" for 127.0.0.1 at 2015-06-30 18:10:35 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OPZzvGtufvR0nt2mDaVxkWm2glCTAbYaozQh69AFqI70xJQPr2hXpMGfa+g8jdaDDYx0THivYWfZqSF9Y4u1hw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fcde81d8798 @tempfile=#<Tempfile:/var/folders/tw/b6m7xfsd3sg2bzy6lwwpxt_r0000gp/T/RackMultipart20150630-63651-1wmujbz.jpeg>, @original_filename="mischa.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"mischa.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "title"=>"testing images", "body"=>"do they work", "all_tags"=>"images, tags, magnets, how do they work"}, "commit"=>"Update Post", "id"=>"testing-images"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "testing-images"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameter: image_cache
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1  [["name", "images"]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1[0m  [["name", "tags"]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1  [["name", "magnets"]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1[0m  [["name", "how do they work"]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.3ms)[0m  UPDATE "posts" SET "image" = $1, "updated_at" = $2 WHERE "posts"."id" = $3  [["image", "mischa.jpeg"], ["updated_at", "2015-06-30 22:10:35.852885"], ["id", 1]]
+  [1m[36m (8.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:5000/posts/testing-images
+Completed 302 Found in 882ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/posts/testing-images" for 127.0.0.1 at 2015-06-30 18:10:36 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"testing-images"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1  [["slug", "testing-images"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "testing-images"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 97ms (Views: 93.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-06-30 18:10:41 -0400
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" LIMIT 5 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 1]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (15.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 120ms (Views: 115.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/i-was-born-in-the-internet" for 127.0.0.1 at 2015-06-30 18:10:45 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"i-was-born-in-the-internet"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "i-was-born-in-the-internet"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1  [["slug", "i-was-born-in-the-internet"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (4.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 107ms (Views: 99.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/i-was-born-in-the-internet/edit" for 127.0.0.1 at 2015-06-30 18:10:49 -0400
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"i-was-born-in-the-internet"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "i-was-born-in-the-internet"]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "i-was-born-in-the-internet"]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 2]]
+  Rendered posts/_form.html.erb (3.7ms)
+  Rendered posts/edit.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 87ms (Views: 79.6ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/posts/i-was-born-in-the-internet" for 127.0.0.1 at 2015-06-30 18:10:58 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0lrmNyVbeGmT5yHcQ3MnkXjvQOzyXbCc/zwBZcewUbEeaAGE4V1ROSbml5JyW4CDHNW28BnzZ+GFoQHzdD5MuA==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fcde7cccda8 @tempfile=#<Tempfile:/var/folders/tw/b6m7xfsd3sg2bzy6lwwpxt_r0000gp/T/RackMultipart20150630-63651-ey010t.jpg>, @original_filename="banecat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"banecat.jpg\"\r\nContent-Type: image/jpeg\r\n">, "image_cache"=>"", "title"=>"I was born in the internet", "body"=>"molded by it", "all_tags"=>"bane, cat, banecat"}, "commit"=>"Update Post", "id"=>"i-was-born-in-the-internet"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "i-was-born-in-the-internet"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameter: image_cache
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1  [["name", "bane"]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1[0m  [["name", "cat"]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."name" = $1  ORDER BY "tags"."id" ASC LIMIT 1  [["name", "banecat"]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "posts" SET "image" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["image", "banecat.jpg"], ["updated_at", "2015-06-30 22:10:58.472320"], ["id", 2]]
+  [1m[35m (8.3ms)[0m  COMMIT
+Redirected to http://localhost:5000/posts/i-was-born-in-the-internet
+Completed 302 Found in 994ms (ActiveRecord: 10.8ms)
+
+
+Started GET "/posts/i-was-born-in-the-internet" for 127.0.0.1 at 2015-06-30 18:10:59 -0400
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"i-was-born-in-the-internet"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1[0m  [["slug", "i-was-born-in-the-internet"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."slug" = $1  ORDER BY "posts"."id" ASC LIMIT 1  [["slug", "i-was-born-in-the-internet"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (5.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 97ms (Views: 94.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-06-30 18:11:03 -0400
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" LIMIT 5 OFFSET 0[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (17.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 168ms (Views: 163.8ms | ActiveRecord: 2.6ms)
